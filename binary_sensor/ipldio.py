@@ -1,5 +1,25 @@
 """
+this component pulls the config of this device from the IPL 
+component and sets up all the DIO on that controller (resource 
+in the configuration). 
 
+To use this component: 
+1. Setup the ipl component instructions
+2. create custom_component/binary_sensor and place ipldio.py into that folder 
+3. make note of the Name of the IPL you want to use the relays on,
+   from the name used in the ipl component. as that is how this 
+   components communicates with that device
+
+4. create a yaml entry as per below 
+
+ipl: 
+  - name: deviceName
+    ...
+
+Example Yaml configuration 
+binary_sensor:
+  - platform: ipldio
+    name: deviceName
 """
 import logging
 import voluptuous as vol

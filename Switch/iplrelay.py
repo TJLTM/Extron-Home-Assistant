@@ -1,14 +1,30 @@
 """
+this component pulls the config of this device from the IPL 
+component and sets up all the relays on that controller (resource 
+in the configuration). 
+
+To use this component: 
+1. Setup the ipl component instructions
+2. create custom_component/switch and place iplrelay.py into that folder 
+3. make note of the Name of the IPL you want to use the relays on,
+   from the name used in the ipl component. as that is how this 
+   components communicates with that device
+
+4. create a yaml entry as per below 
+
+ipl: 
+  - name: deviceName
+    ...
+
+Example Yaml configuration 
 switch:
   - platform: iplrelay
-    name: 
+    name: deviceName
 
 """
 import logging
 import voluptuous as vol
 from datetime import timedelta
-
-
 from homeassistant.components.switch import (SwitchDevice, PLATFORM_SCHEMA)
 from homeassistant.const import CONF_NAME, CONF_TYPE,CONF_FRIENDLY_NAME
 import homeassistant.helpers.config_validation as cv
